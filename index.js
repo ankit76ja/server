@@ -2,6 +2,7 @@ const express = require('express');
 const socketio = require('socket.io');
 const http = require('http')
 const app = express();
+const cors = require('cors');
 
 const { addUser, removeUser, getUser, getUserInRoom } = require('./users');
 
@@ -12,6 +13,7 @@ app.use(function(req, res, next) {
     next();
  });
 
+ app.use(cors);
 const router = require('./router');
 
 const PORT = process.env.PORT || 5000
